@@ -1,19 +1,21 @@
-#loading
-{
-    position: fixed;
-    padding: 250px 0 0 0;
-    margin: 0;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    background-color: white;
-    font-size: 48px;
+body{
+    margin 0 auto;
 }
 
 /* Nav Styles */
 nav
 {
     color: #fff;
+}
+
+/* UI Styles */
+.ui
+{
+    text-align: center;
+    margin: 20% auto 0 auto;
+    width: 500px;
+}
+
+#searchField{
+    width: 400px;
 }
