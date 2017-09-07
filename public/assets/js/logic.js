@@ -46,12 +46,14 @@ $("#searchBtn").on("click", function(event){
                   var article = {
                       headline: data.headline.main,
                       snippet: data.snippet,
-                      date: data.pub_date,
-                      address: data.keywords[k].value
+                      date: moment(data.pub_date).format("YYYYMMDD"),
+                      address: data.keywords[k].value,
+                      temp: null
                   }
+
                   verifyAddress(article);
+                  weatherHistory(article);
                   articles.push(article);
-                  console.log(articles);
               }
           }
       }
@@ -71,8 +73,35 @@ function verifyAddress(article) {
 
         if (status === google.maps.GeocoderStatus.OK)
         {
-            address = results[0].formatted_address;
-            article.address = address;
+            article.address = results[0].formatted_address;
+            //state
+            //city 
+            //
         }
 	});
+}
+
+function weatherHistory(article) {
+
+  var apikey = "0819f869898c0096";
+
+  var queryURL = "http://api.wunderground.com/api/" + apikey 
+               + "/history_"+ article.date 
+  //             + searchDate 
+               + "/q/CA" 
+  //             + stateAbbr 
+               + "/" 
+  //             + city 
+               + "San_Francisco.json"
+
+      $.ajax({
+          url: queryURL,
+          method: "GET"
+      }).done(function(response) {
+          response = response.history.observations;
+          article.temp = response[0].tempi;
+          // console.log("temp: "+i+ " " +response[0].tempi);            
+          console.log(articles);
+
+      });
 }
