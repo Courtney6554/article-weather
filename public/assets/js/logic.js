@@ -53,11 +53,7 @@ $("#searchBtn").on("click", function(event)
                       snippet: data.snippet,
                       url: data.web_url,
                       date: moment(data.pub_date).format("YYYYMMDD"),
-                      address: data.keywords[k].value,
-                      state: null,
-                      abbr: null,
-                      city: null,
-                      temp: null
+                      address: data.keywords[k].value
                   }
                   verifyAddress(article);
                   articles.push(article);
@@ -135,6 +131,8 @@ function weatherHistory(article) {
       }).done(function(response) {
           response = response.history.observations;
           article.temp = response[0].tempi;
+          article.cond = response[0].conds;
+          article.icon = response[0].icon;
           articleList.ref().push(article);
       });
 }
@@ -144,6 +142,10 @@ articleList.ref().on("child_added", function (data)
     var article = data.val();
 
     $("#articles").append("<div class='card'>"+
+    "<div class='card-temp'><p class='temp'>"+article.temp+"&deg;</p>"+
+    "<p class='cond'>"+article.cond+"</p>"+
+    "<img class='cond-icon' src='https://icons.wxug.com/i/c/j/"+article.icon+".gif'/>"+
+    "<p class='location'>"+article.address+"</p></div>"+
     "<img class='card-img-top' src='"+article.image+"'><div class='card-body'>"+
     "<h1 class='card-title'>"+article.headline+"</h1>"+
     "<p class='card-text'>"+article.snippet+"</p>"+
