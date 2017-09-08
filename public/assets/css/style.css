@@ -13,7 +13,7 @@ nav
 .ui
 {
     text-align: center;
-    margin: 20% auto 0 auto;
+    margin: 20% auto 25px auto;
     width: 500px;
 }
 
@@ -32,4 +32,18 @@ nav
 h1
 {
     font-size: 24px;
+}
+
+/* Card Flip */
+.flip,
+.card-img-top
+{
+    height: 164px;
+}
+
+.flip .back
+{
+    background: #fff;
+    color: #000;
+    text-align: center;
 }

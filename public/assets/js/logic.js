@@ -120,7 +120,7 @@ function verifyAddress(article) {
 
 function weatherHistory(article) {
     var apikey = "0819f869898c0096";
-    var queryURL = "http://api.wunderground.com/api/"
+    var queryURL = "https://api.wunderground.com/api/"
                + apikey
                + "/history_" + article.date
                + "/q/" + article.abbr
@@ -142,14 +142,20 @@ articleList.ref().on("child_added", function (data)
     var article = data.val();
 
     $("#articles").append("<div class='card'>"+
-    "<div class='card-temp'><p class='temp'>"+article.temp+"&deg;</p>"+
+    "<div class='flip'><div class='front'>"+
+    "<img class='card-img-top' src='"+article.image+"'></div>"+
+    "<div class='back'><div class='card-temp'><h1 class='temp'>"+article.temp+"&deg;</h1>"+
     "<p class='cond'>"+article.cond+"</p>"+
     "<img class='cond-icon' src='https://icons.wxug.com/i/c/j/"+article.icon+".gif'/>"+
-    "<p class='location'>"+article.address+"</p></div>"+
-    "<img class='card-img-top' src='"+article.image+"'><div class='card-body'>"+
+    "<p class='location'>"+article.address+"</p></div></div></div>"+
+    "<div class='card-body'>"+
     "<h1 class='card-title'>"+article.headline+"</h1>"+
     "<p class='card-text'>"+article.snippet+"</p>"+
     "<a href='"+article.url+"' class='btn btn-outline-dark'>Read Article</a>"+
     "</div><div class='card-footer text-muted'>"+moment(article.date).format("MM/DD/YYYY")+
     "</div></div>");
+
+    $(".flip").flip({
+        trigger: 'hover'
+    });
 });
