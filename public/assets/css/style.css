@@ -1,4 +1,5 @@
-body{
+body
+{
     margin 0 auto;
 }
 
@@ -16,6 +17,19 @@ nav
     width: 500px;
 }
 
-#searchField{
-    width: 400px;
+#searchField
+{
+    width: 250px;
+    margin-right: 15px;
+}
+
+#daterange
+{
+    margin-right: 5px;
+}
+
+/* Card Styles */
+h1
+{
+    font-size: 24px;
 }
