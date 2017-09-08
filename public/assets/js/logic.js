@@ -1,6 +1,6 @@
 //Initialize variables
 var articles=[];
-var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+var url0 = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
 var dateStart = "20170801";
 var dateEnd = "20170901";
 
@@ -20,7 +20,7 @@ $("#searchBtn").on("click", function(event){
     articles=[];
     event.preventDefault();
     let query = $("#searchField").val();
-    url += '?' + $.param({
+    url = url0 + '?' + $.param({
       'api-key': "d4a45b6e145a424ba8a4730581bc76a6",
       'begin_date': dateStart,
       'end_date': dateEnd,
