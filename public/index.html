@@ -14,11 +14,12 @@
         <div class="row">
             <form class="form-inline">
                 <input id="searchField" class="form-control" type="text" placeholder="Search" aria-label="Search">
-                <input id="daterange" type="text" name="daterange" value="08/06/2017 - 09/6/2017" />
-                <button id="searchBtn" class="btn btn-outline-success" type="submit">Search</button>
+                <div id="daterange" class="btn btn-outline-dark" name="daterange" value="08/06/2017 - 09/6/2017"><i class="fa fa-calendar" aria-hidden="true"></i> Date Range</div>
+                <button id="searchBtn" class="btn btn-outline-success" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
             </form>
         </div>
     </div>
+    <div id="articles" class="card-columns"></div>
 </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
