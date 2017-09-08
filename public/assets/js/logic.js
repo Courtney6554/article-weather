@@ -1,5 +1,6 @@
 //Initialize variables
 var articles=[];
+var articleList = firebase.database();
 var url0 = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
 var dateStart = "20170801";
 var dateEnd = "20170901";
@@ -20,6 +21,8 @@ $('#daterange').on('apply.daterangepicker', function(ev, picker)
 $("#searchBtn").on("click", function(event)
 {
     event.preventDefault();
+    $("#articles").empty();
+    articleList.ref().remove();
     let query = $("#searchField").val();
     url = url0 + '?' + $.param({
       'api-key': "d4a45b6e145a424ba8a4730581bc76a6",
@@ -58,6 +61,7 @@ $("#searchBtn").on("click", function(event)
                   }
                   verifyAddress(article);
                   articles.push(article);
+                  break;
               }
           }
       }
@@ -117,8 +121,6 @@ function verifyAddress(article) {
         }
 	});
 }
-
-var articleList = firebase.database();
 
 function weatherHistory(article) {
     var apikey = "0819f869898c0096";
